@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dealRoutes = express.Router();
-const PORT = 4000;
+
 
 let Deal = require('./deal.model');
 
@@ -106,7 +106,8 @@ dealRoutes.route('/delete/:id').post(function (req, res) {
 
 app.use('/deals', dealRoutes);
 
-app.listen(PORT, function () {
-    console.log(`Server is running on port: ${PORT} `);
-
-})
+// start server
+const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
+const server = app.listen(port, function () {
+    console.log('Server listening on port ' + port);
+});
