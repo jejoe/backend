@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dealRoutes = express.Router();
+const dotenv = require('dotenv');
+dotenv.config({path: './config/config.env'});
 
 
 let Deal = require('./deal.model');
